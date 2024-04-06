@@ -30,8 +30,7 @@
 - `Container Element`에 `display: flex` 적용되면
 - 하위 요소가 가진 기본 `margin value` 무시하고, 지정한 방향대로 요소를 배치함.
 ---
-
-### `flexbox` - `main-axis` & `cross-axis`
+#### `flexbox` - `main-axis` & `cross-axis`
 
 
 ![flexbox의 main-axis, cross-axis](/FrontEnd/CSS/ref_img/flexbox.png)
@@ -46,7 +45,7 @@
 - `main-axis`에 따라 `flexbox`의 하위 요소들의 배치 방향도 달라진다.
 
 ---
-### `flex-direction`
+#### `flex-direction`
 
 - `flexbox` 하위 `Element` 배치할 때 `main-axis` 지정할 수 있는 속성
 - `Element` 배치할 방향을 정하는 속성 (가로 / 세로, 정방향 / 역방향)
@@ -84,7 +83,54 @@
 ```
 
 ---
+#### `flexbox 속성`
 
+- **`justify-content`**
+	- 주축 배치 방법
+	- `main-axis` 기준으로 `flex Container` 하위 요소를 어떤 식으로
+		정렬할 지를 정의하는 속성
+		
+``` html
+<style>
+	.Container {
+		display: flex;
+		
+		justify-content: start; /*요소를 Container의 시작 부분에 정렬*/
+		justify-content: center; /*요소를 Container의 중앙 부분에 정렬*/
+		justify-content: end; /*요소를 Container의 끝 부분에 정렬*/
+
+
+		justify-content: flex-start; /*flex 항목들을 Container 시작 부분 정렬*/
+		justify-content: flex-end; /*flex 항목들을 Container 끝 부분 정렬*/
+
+		justify-content: space-between;
+		/* 
+			요소를 고르게 정렬 
+			처음 요소는 시작 부분 밀착해서 정렬
+			마지막 요소는 끝 부분에 밀착해서 정렬
+		*/
+
+		/*
+			나머지 속성 값은 공식문서 참고할 것
+		*/
+	}
+</style>
+<div class="Container">
+	<div class="item">One</div>
+	<div class="item">Two</div>
+	<div class="item">Three</div>
+</div>
+```
+
+- **`align-items`**
+	- 교차축 배치 방법
+
+- **`align-self`**
+	- 교차축 개별 요소 배치 방법
+
+- **`flex-wrap`**
+	- 줄바꿈 여부
+---
 #### 📔 Reference
 
 - **[입문자를 위한 CSS 기초 강의 / Inflearn 유노코딩](https://inf.run/xAnx)**
