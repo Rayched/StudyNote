@@ -14,7 +14,7 @@ const Prom = new Promise((resolve, reject) => {});
 - `new Promise()` 연산자로 `Promise` 객체를 생성할 때 <br/>
 	전달한 함수를 `executor (실행자, 실행 함수)`라고 한다.
 - `executor` 함수는 `Promise` 객체가 생성될 때 자동으로 실행되는 함수이다.
-- 이때 `executor` 함수는 `resolve`, `rejected` 두 가지 Callback 함수를 인자로 받는다.
+- 이때 `executor` 함수는 `resolve`, `reject` 두 가지 Callback 함수를 인자로 받는다.
 - `resolve` : 비동기 작업이 성공적으로 끝나면 호출되는 Callback
 - `reject` : 비동기 작업 수행 중 Error가 발생, 작업에 실패했을 경우에 <br/>
 		 호출되는 Callback
