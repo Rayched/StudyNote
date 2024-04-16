@@ -9,7 +9,7 @@
 
 - 이번 페이지에서 `props`에 대한 것은 다루지 않는다.
 - `props`에 대해 알고 싶다면 아래 링크를 참고하길 바란다.
-- **[`props`](React_props.md)**
+- **[`props`](props.md)**
 
 ---
 ### `function Component`
@@ -39,5 +39,8 @@ class People extends React.Component {
 - `ES6`에서 추가된 문법인 `class`를 활용해서 만들어지는 `React Component`
 - `React.Component`로부터 상속 받아서 만들어지는 Component이다.
 - 바로 앞에서 다룬 함수 Component보다 조금 복잡한 형태를 가지고 있다.
+
+- `React.Component`로부터 상속 받아서, `class Component`를 만들 때에는 <br/>
+	`render()` 함수를 반드시 정의를 해줘야 한다. (공식 문서 曰)
 
 ---
