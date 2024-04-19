@@ -56,7 +56,6 @@ function Exam(){
 - `Component`는 계속 존재하는 것이 아니라, 시간의 흐름에 따라 <br/>
 	생성되고, 업데이트 되다가 사라지는 일종의 LifeCycle (생명 주기) 가지고 있다.
 
-
 ---
 ### 📔 Reference
 
