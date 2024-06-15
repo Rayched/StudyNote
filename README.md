@@ -12,6 +12,7 @@
 ---
 ### TypeScript
 - **[`class` 비교 (TypeScript / JavaScript)](/FrontEnd/TypeScript/class_비교_TS-JS.md)**
+- **[`interface`](/FrontEnd/TypeScript/interface.md)**
 ---
 ### React
 - **[React의 정의](/FrontEnd/React/React의%20정의.md)**
