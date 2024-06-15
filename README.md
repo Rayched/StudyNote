@@ -10,6 +10,9 @@
 - **[`this`](/FrontEnd/JavaScript/JS-this.md)**
 - **[`Promise`](/FrontEnd/JavaScript/Sync%20and%20Async/Promise.md)**
 ---
+### TypeScript
+- **[`class` 비교 (TypeScript / JavaScript)](/FrontEnd/TypeScript/class_비교_TS-JS.md)**
+---
 ### React
 - **[React의 정의](/FrontEnd/React/React의%20정의.md)**
 - **[Component란 무엇인가?](/FrontEnd/React/Component.md)**
