@@ -90,6 +90,130 @@ function App(){
 #### `useSetRecoilState()`
 
 - `useSetRecoilState()` Hook을 통해서 `Atom`의 값을 변경할 수 있다.
-- 
+- 테마를 `Light/Dark` 전환하는 `<ToggleBtn />`의 코드를 업데이트를 진행
 
+``` tsx
+//ToggleBtn
+//테마를 Light/Dark 전환하는 Toggle Button Component
+
+const ToggleButton = styled.div``;
+
+/*
+* 기존 코드 (props 통해 순차적으로 state 전달했던 버전)
+interface theme {
+	isTheme: boolean|undefined;
+	onToggle: Function;
+}
+
+function ToggleBtn({isTheme, onToggle}: theme){
+	//isTheme => App 선언한 state: Theme (boolean)
+	//onToggle => setTheme();
+
+	const onClick = () => onToggle();
+
+	return (
+		<ToggleButton onClick={onClick}>
+			{
+				isTheme ? "Dark" : "Light"
+			}
+		</ToggleButton>
+	);
+}*/
+
+//Recoil Install, use Atoms
+function ToggleBtn(){
+	const isDark = useRecoilValue(isDarkAtom);
+	//isDarkAtom의 Recoil state 값을 반환
+	//이를 변수 isDark 저장한다.
+	
+	const setDark = useSetRecoilState(isDarkAtom);
+	//isDarkAtom의 state 변경하는 setDark 함수
+
+	const onClick = () => {
+		setDark((themes) => !themes);
+	};
+
+	return (
+		<ToggleButton onClick={onClick}>
+			{
+				isDark ? "Dark" : "Light"
+			}
+		</ToggleButton>
+	);
+}
+```
+
+- 예전에 했던 것처럼 `App - Router - Coins/Coin - ToggleBtn` 순으로 <br/>
+	`props` 통해 `theme`의 `state` 값을 전달 받을 필요 없이 
+- `state`를 `Atom`에 보관해두고 이를 직접적으로 참조할 수 있다.
+- 즉, 상위 Component (`App, Router, Coins/Coin`)를 거칠 필요가 없다는 것이다.
+
+#### `useRecoilValue(state)`
+
+- `useRecoilValue(state)` 함수는 `Recoil state` 반환하는 Hook으로
+- Component가 `state`를 읽을 수만 있게 하고 싶을 때 추천되는 Hook이다.
+
+- 해당 Hook을 통해서 컴포넌트에서 `state` 참조하는 모습은 <br/>
+	어떻게 보면 `Recoil state`, `atom`을 구독한다고 볼 수 있다.
+
+- 여기서 `atom`의 값이 변하게 되면, 이를 구독하는 모든 컴포넌트에서
+- Re-rendering이 발생하게 된다. <br/>
+	(`state` 값 변하면 Re-render되는 것과 같다...)
+
+---
+
+#### `useSetRecoilState(state)`
+
+- `useSetRecoilState()` 함수는 `Recoil state`의 값을 업데이트하는 <br/>
+	`setter` 함수, `setState()` 함수를 반환하는 Hook이다.
+	
+- 인자로 Callback 전달 받는데, 이를 통해서 `Recoil state, atom`의 값을 갱신한다.
+
+``` ts
+const setDark = useSetRecoilState(isDarkAtom);
+
+const onClick = () => {
+	setDark((themes) => !themes);
+}
+```
+
+
+- `useRecoilValue()`, `useSetRecoilState()` Hook 통해서
+- `Recoil state`를 읽기와 쓰기 작업을 개별적으로 수행했다면
+- `useRecoilState()` Hook을 통해서 위의 두 작업을 한 번에 처리할 수 있다.
+
+---
+
+#### `useRecoilState(state)`
+
+- `React`에서 `useState()` 비슷한 기능을 하는 Hook
+- `state`가 Component 간에 공유될 수 있다는 차이점이 존재한다.
+
+``` tsx
+function ToggleButton(){
+	const [isDark, setDark] = useRecoilState(isDarkAtom);
+
+	const onClick = () => {
+		setDark(!isDark);
+	};
+
+	return (
+		<ToggleButton onClick={isDark}>
+			{isDark ? "Dark" : "Light"}
+		</ToggleButton>
+	);
+};
+```
+
+- `Toggle Button` 클릭하면 `isDarkAtom`의 값이 `false → true` 바뀌고
+- 이를 구독하는 다른 컴포넌트(`<App/>...`)에서도 똑같이 변화가 발생된다.
+
+- `<App/>` => `isDarkAtom` 값에 따라 `DarkTheme` 혹은 `LightTheme`  <br/>
+	하위 컴포넌트에게 제공한다.
+- 그리고 제공받은 `theme`에 맞춰서 배경색, 글자색 등이 변화된다.
+
+- `props` 통해서 상위에서 하위 순으로 `state` 전달할 필요 없이
+- `Theme state`가 필요한 Component에서만 `state, atom` 구독, 사용하고
+- `isDarkAtom` 사용하는 다른 컴포넌트의 테마도 같이 변화된다.
+---
 
