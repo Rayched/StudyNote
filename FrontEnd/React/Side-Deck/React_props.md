@@ -187,7 +187,7 @@ Console 창에도 두 개의 결과가 나온다.
 - `<button>`의 텍스트를 `{props.BtnName}`로 수정하고 확인해보자. <br/>
 	(`Object 'props'`에서 `BtnName`이라는 Key 값을 가진 Property 호출)
  
-![Alt text](Ref_Imgs/BtnName%EC%9D%98_%EA%B0%92%EC%9D%84_Btn_Component%EC%97%90_%EC%A0%81%EC%9A%A9.png)
+![Alt text](BtnName의_값을_Btn_Component에_적용.png)
 
 - 여기서 `props`는 `Object`이기 때문에, `{BtnName}`과 같이 적을 수 있다. <br/>
 

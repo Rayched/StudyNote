@@ -15,12 +15,12 @@
 - **[`interface`](/FrontEnd/TypeScript/interface.md)**
 ---
 ### React
-- **[React의 정의](/FrontEnd/React/React의%20정의.md)**
-- **[Component란 무엇인가?](/FrontEnd/React/Component.md)**
+- **[React의 정의](FrontEnd/React/React_basic/React의%20정의.md)**
+- **[Component란 무엇인가?](Component.md)**
 - **[`props`](/FrontEnd/React/React_props.md)**
-- **[`state`](/FrontEnd/React/State.md)**
-- **[`Hooks`](/FrontEnd/React/Hooks.md)**
-- **[`Hook의 규칙`](/FrontEnd/React/Hook의%20규칙.md)**
+- **[`state`](State.md)**
+- **[`Hooks`](Hooks.md)**
+- **[`Hook의 규칙`](Hook의%20규칙.md)**
 - [`React Master Class 강의 메모`](/FrontEnd/React/React_masterclass/GuideLine.md)
 
 ---
