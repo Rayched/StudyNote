@@ -106,6 +106,8 @@ const { register, watch } = useForm();
 */
 ```
 
+- 이외에도 `required`, `maxLength`, `minLength`와 같은 기타 `option` 설정 가능
+- `option` 속성들은 `객체 Property` 형식으로 명시한다.
 ---
 
 #### `const {watch} = useForm()`
@@ -471,6 +473,111 @@ function UserForm(){
 - `console`을 통해서 Error가 발생한 부분을 확인할 수 있다.
 
 <img src="ref/formState.png"/>
+
+---
+
+### `Form Errors`
+
+- 기존 예제에서 `Email` input form 추가하고, `option`을 새로 추가하였다.
+
+```
+Name => 최소 두 글자 이상 입력
+ID => 최소 다섯 글자 이상 입력
+PW, PW_Check => 최소 여덟 글자 이상 입력, 경고 메시지도 출력함.
+Email(New) => 기본 양식 '****@naver.com' 설정, 경고 메시지 추가
+```
+
+``` tsx
+//Email Input form만 발췌하였음.
+
+function UserForm(){
+	return (
+		<Form_Wrap>
+			<h3>회원 정보 입력</h3>
+			<form onSubmit={handleSubmit(onValid)}>
+			{/** 
+				기존 코드's
+			*/}
+				<span>
+					이메일: 
+					<input 
+						{...register("Email", {
+							required: true,
+							pattern: {
+								value: /^[A-Za-z0-9._%+-]+@naver\.com/,
+								message: "이메일은 '~@naver.com' 형식만 허용됩니다."
+							}
+						})},
+						placeholder="이메일을 입력해주세요."
+					/>
+				</span>
+			</form>
+		</Form_Wrap>
+	);
+}
+```
+
+- `Email` option으로 정규 표현식을 추가하였다.
+- `Email`을 `~@naver.com` 형식으로 작성하지 않았을 때 Error를 return한다.
+- 그리고 `Error`에 대한 결과는 개발자 콘솔에서 아래 이미지처럼 확인할 수 있다.
+
+<img src="ref/regExp.png"/>
+
+---
+
+#### `정규 표현식`
+
+``` js
+/*
+	정규 표현식 Regular Expressions
+	
+	* 문자열에서 특정 문자 조합을 찾기 위한 패턴
+	* Javascript에서 정규 표현식은 아래와 같은 방식으로 만들 수 있다.
+*/
+
+//정규 표현식 리터럴
+const regExp = /ab+c/;
+//'/'로 패턴을 감싸서 작성하는 형태
+
+//RegExp 객체 생성자 호출
+const regExpII = new RegExp("ab+c");
+
+/** 
+	* 전자의 경우는 Script를 불러올 때 Compile되므로
+	* 패턴을 바꿀 일이 없는 경우에는 리터럴 방식을 사용하고
+	* 바뀔 수도 있는 패턴 혹은 사용자 입력 등의 외부에서 가져오는 패턴의 경우에는
+	* RegExp 객체의 생성자 함수를 통해서 정규 표현식을 생성한다.
+/
+```
+
+---
+
+- 이메일을 `~@naver.com` 형식으로 작성하지 않았을 때
+- 발생되는 Error도 개발자 콘솔을 통해서 확인할 수 있었다.
+
+- 다만 이러한 방식은 사용자의 환경에 따라서는 Error를 확인하지 못할 수도 있다.
+- 그러므로 회원 정보 입력 form에서 유효성 검사에 실패해서 Error가 발생했을 때
+- 어느 부분에서 어떠한 사유로 form Error가 발생했는 지에 대해서 알려주는
+- User Interface를 하나 만들어보자.
+
+---
+
+- 최종 결과물은 다음과 같다.
+
+<img src="ref/ErrorBox.png"/>
+
+---
+
+- Error 사항을 더 추가하였다.
+- React Hook Form에서 제공하는 `setError()` 통해서
+- `비밀번호`, `비밀번호 확인` 입력 form이 동일한 비밀번호를 입력하지 않았을 때
+- `Error` return, message를 에러 확인창에 출력하고
+- 서버 접속에 문제가 생겼다고 가정하고 Error를 추가로 return하였다.
+
+- 그리고 중복된 아이디를 생성 시 Error 발생시키는 코드를
+- `ID Input form`에 추가하였다. (`validate` option 사용)
+
+- 자세한 사항은 소스코드를 참고할 것...
 
 ---
 
