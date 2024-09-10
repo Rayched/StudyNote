@@ -28,7 +28,7 @@ export const ToDo_State = atom<I_ToDos[]>({
 
 ---
 
-### `selector`
+### `selector` / Part 1
 
 - `selector`는 **파생된 `state` (derived state)** 의 일부를 나타낸다.
 - 여기서 `derived state`는 `state`를 입력 받고, 그걸 변형해서 반환하는 <br/>
@@ -187,4 +187,5 @@ function ToDoList(){
 
 ---
 
+### `selector` / Part 2
 
