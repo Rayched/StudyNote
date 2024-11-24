@@ -30,11 +30,13 @@ export const ToDo_State = atom<I_ToDos[]>({
 
 ### `selector` / Part 1
 
-- `selector`는 **파생된 `state` (derived state)** 의 일부를 나타낸다.
-- 여기서 `derived state`는 `state`를 입력 받고, 그걸 변형해서 반환하는 <br/>
-	순수 함수를 거쳐서 반환된 값을 의미한다.
+- `selector`는 **파생된 상태 (derived state)** 의 일부를 나타낸다.
+- 여기서 파생된 상태란 `state` 입력 받고, 그걸 변형해서 반환하는 <br/>
+	순수 함수에 전달된 상태의 결과물이라고 보면 된다.
 - 이렇게 만든 `derived state`는 다른 데이터에 의존하는 <br/>
 	동적인 데이터를 만들 수 있기 때문에 강력한 개념이다.
+- 이러한 `selector`는 `recoil`의 `selector()` 함수를 통해서 <br/>
+	생성 가능하다.
 
 ``` ts
 import {selector} from "recoil";
@@ -47,11 +49,21 @@ const toDoSelector = selector(
 
 - `selector` 함수는 `key`와 `get function`이라는 두 개의 `prop` 가지고 있다.
 
-- `key`: `key` 값으로 사용할 문자열 값을 전달 받는다.
+```
+selector props
 
-- **`get function`**
-	- 인자로 `option` 객체를 받는데, 해당 객체에는 `get function`이 들어가 있다.
-	- 여기서 `get function`이 `return`하는 값이, `toDoSelector`의 `value`가 된다.
+1. key
+- 해당 selector만의 고유한 ID 명시
+
+2. get
+- 인자로 option 객체를 전달받는데, 해당 객체에는 get()이 들어있다.
+- 여기서 get function의 return 값이 selector의 value가 된다.
+```
+
+---
+
+- `selector`에 대한 기본적인 것을 알았으니
+- 예제를 통해서 숙달해보자.
 
 ``` tsx
 //get function return 값이 `toDoSelector`의 value가 되는 지 확인하는 예제
