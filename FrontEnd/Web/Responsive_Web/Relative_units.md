@@ -26,8 +26,6 @@
 	- `em`과는 다르게 `Root`의 폰트 사이즈에 의해 결정되는 방식 <br/>
 		(`Root => <html> or <body>`)
 
-- 
-
 ---
 
 ``` html
@@ -115,15 +113,26 @@
 - 이번에 다룰 것은 `Viewport` 기반으로 값을 계산해서
 - 크기를 결정하는 가변 단위인 `vw, vh, vmin, vmax` 다뤄볼 것이다.
 
-#### `vw, viewport width`
+#### `vw / vh (viewport width / viewport height)`
+
+- 현재 보여지는 웹 상 화면, `Viewport` 기준으로 너비와 높이를 정하는 단위
+
+``` css
+font-size: 1vw; /*Viewport 너비, 1/100*/
+font-size: 1vh; /*Viewport 높이, 1/100*/
+```
 
 ---
-#### `vh, viewport height`
+#### `vmin / vmax`
 
----
-#### `vmin`
+- `vmin`: `Viewport`의 너비와 높이 중 더 **작은 값** 기준으로 백분율 차지
+- `vmax`: `Viewport`의 너비와 높이 중 더 **큰 값** 기준으로 백분율 차지
 
----
-#### `vmax`
+``` css
+font-size: 1vmin; 
+/*Viewport 너비와 높이 중, 더 작은 쪽의 1/100 크기 설정*/
+font-size: 1vmin; 
+/*Viewport 너비와 높이 중, 더 큰 쪽의 1/100 크기 설정*/
+```
 
 ---
