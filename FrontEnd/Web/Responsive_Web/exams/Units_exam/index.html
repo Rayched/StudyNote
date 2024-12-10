@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>Units Example</title>
+    <style>
+        .Outer {
+            font-size: 24px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .box {
+                display: flex;
+                justify-content: center;
+                align-items: center;         
+                width: 150px;
+                height: 150px;
+                background-color: tomato;
+                margin: 3px;
+            };
+        }
+
+        #box1 { 
+            font-size: 1em; 
+            padding: 1em; 
+        }
+
+        #box2 {
+            font-size: 1em;
+            padding: 1rem;
+        }
+
+        #box3 {
+            font-size: 1rem;
+            padding: 1em;
+        }
+        
+        #box4 {
+            font-size: 1rem;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Outer">
+        <div class="box" id="box1">em / em</div>
+        <div class="box" id="box2">em / rem</div>
+        <div class="box" id="box3">rem / em</div>
+        <div class="box" id="box4">rem / rem</div>
+    </div>
+</body>
+</html>

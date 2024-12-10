@@ -18,8 +18,10 @@
 - **[`Enums`](/FrontEnd/TypeScript/Enums.md)**
 ---
 ### Web
-- **[반응형 웹이란 무엇인가?](/FrontEnd/Web/Responsive_Web/Responsive_Web.md)**
-- **[반응형 웹, 단위's](/FrontEnd/Web/Responsive_Web/units.md)**
+- **`반응형 웹 Responsive Web`**
+    - **[반응형 웹의 정의](/FrontEnd/Web/Responsive_Web/Responsive_Web.md)**
+    - **[Relative units 상대 단위](/FrontEnd/Web/Responsive_Web/Relative_units.md)**
+
 - **[DOM](/FrontEnd/Web/DOM.md)**
 - **[SPA와 MPA](/FrontEnd/Web/SPA_and_MPA.md)**
 
