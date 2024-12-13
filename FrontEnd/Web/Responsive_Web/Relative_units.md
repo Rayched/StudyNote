@@ -136,3 +136,168 @@ font-size: 1vmin;
 ```
 
 ---
+
+### 상대 단위, Part 3
+
+#### `%`
+
+- 백분율 값을 의미
+- 부모 요소와의 상대적인 크기를 지정할 때 사용하는 단위
+- 너비, 높이, 여백 등의 크기를 지정할 때 사용할 수 있다.
+
+``` css
+width: 50%;
+height: 50%;
+```
+
+- `width, padding, margin` => 부모 요소의 `width(너비)` 비례
+- `height` => 부모 요소의 `height(높이)` 비례
+
+---
+
+#### `%` 예제
+
+``` html
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Example</title>
+	<style>
+		.Wrapper {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		/*요소 전체 공용 스타일*/
+		.Box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 3px;
+		}
+		
+		/*요소 개별 스타일*/
+		header {
+			color: white;
+			background-color: tomato;
+			width: 604px;
+			height: 150px;
+		}
+		
+		nav {
+			width: 150px;
+			height: 200px;
+			float: left;
+			color: white;
+			background-color: blue;
+		}
+		
+		main {
+			width: 448px;
+			height: 200px;
+			float: right;
+			background-color: yellow;
+		}
+		
+		footer {
+			color: white;
+			background-color: green;
+			width: 604px;
+			height: 150px;
+		}
+	</style>
+</head>
+	<body>
+		<div class="Wrapper">
+			<header class="Box">Header</header>
+			<nav class="Box">Nav</nav>
+			<main class="Box">Main</main>
+			<footer class="Box">Footer</footer>
+		</div>
+	</body>
+</html>
+```
+
+- 위의 예제의 모든 Box 요소의 크기는 절대 단위인 `px`로 설정된 상태이다.
+- 즉, 아래 사진처럼 브라우저 화면이 줄어들어도
+- 각 요소의 크기에는 변화가 발생하지 않는다.
+
+<img src="refImgs/relative_units_part3_exam_b.gif"/>
+
+- 이제 각 요소의 `width` 값을 절대 단위인 `px`에서
+- 상대 단위인 `%`로 수정하고 그 결과를 확인해보자.
+
+---
+
+#### `%` 예제_Update
+
+- 제일 먼저 상단/하단에 해당되는 `header`와 `footer`의 `width: 90%`로 설정하였다.
+
+- 이제 여기에 맞춰서 `nav`와 `main`의 배율을 조금씩 조정하였다.
+
+- `nav`와 `main`의 비율을 `2:8` 이나 `3:7`에 가깝게 `width`의 값을 조정했는데 <br/>
+	여기서 `nav`와 `main` 사이의 여백이 사라지지 않는 문제가 발생했다.
+
+<img src="refImgs/relative_units_part3_exam_issue.png"/>
+
+- 이런 식으로 `main`이 `Header`와 `Footer` 사이에서 튀어나오는데
+- 이는 내가 원하는 형태가 아니기 때문에 이를 해결하기 위해서
+- `main`과 `nav`의 `width` 값을 계속 조정해봤지만 변함은 없었다.
+
+- 그러다가 혹시나 해서, `main`의 `float: right` 속성을 제거해보니 <br/>
+	`Main`과 `Nav` 사이의 여백이 사라지는 것을 확인할 수 있었다.
+
+- 이제 `Main`의 `width`를 조금씩 조정하였고, 최종 결과물은 다음과 같다.
+
+<img src="refImgs/relative_units_part3_exam_a.gif"/>
+
+
+``` css
+.Wrapper {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.Box {/* 수정 X */}
+
+header {
+	color: white;
+	background-color: tomato;
+	/*width: 604px;*/
+	width: 90%;
+	height: 150px;
+}
+
+nav {
+	/*width: 150px;*/
+	width: 25%;
+	height: 200px;
+	float: left;
+	color: white;
+	background-color: blue;	
+}
+
+main {
+	/*
+		삭제
+		width: 448px;
+		float: right;
+	*/
+	width: 64%;
+	height: 200px;
+	background-color: yellow;
+}
+
+footer {
+	color: white;
+	background-color: green;
+	/*width: 604px;*/
+	width: 90%;
+	height: 150px;
+}
+```
+
+---
+
+
+
